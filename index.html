@@ -12,14 +12,17 @@
                 validator: function(a){ return (typeof a === "string"); }
             },alert)
         }
-        console.log('Take a look at this example object');
+        console.log('Take a look at this example object. It has an alert method');
         console.log('Example',Example);
+        console.log('Example.alert',Example.alert);
+        console.log('Example.alert.usage',Example.alert.usage);
+        console.log('Example.alert.explain()',Example.alert.explain());
         console.log('And this is what happens if the method is called incorrectly');
         console.log('Example.alert()');
-        Example.alert();
+        setTimeout(Example.alert,1);
     </script>
 </head>
 <body>
-    
+    Take a look at the console!
 </body>
 </html>

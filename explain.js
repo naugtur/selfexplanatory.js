@@ -28,7 +28,8 @@ var explain = (function () {
             }
             return method.apply(this, arguments)
         };
-        explainedMethod.toString = explainedMethod.toSource = function () {
+        explainedMethod.usage = defString;
+        explainedMethod.toString = explainedMethod.toSource = explainedMethod.explain = function () {
             return defString;
         }
         return explainedMethod
