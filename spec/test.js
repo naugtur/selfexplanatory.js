@@ -14,8 +14,8 @@ describe("Selfexplanatory.js", function () {
             returns: "int"
         }, method);
 
-        expect(explained.toString()).toEqual("function( <string: url> )\ndoes stuff");
-        expect(explained2.toString()).toEqual("function( <string: url> )\ndoes stuff\nreturns: int");
+        expect(explained.toString()).toEqual("function( <string: url> ) does stuff");
+        expect(explained2.toString()).toEqual("function( <string: url> ) does stuff\nreturns: int");
 
     });
 
@@ -33,66 +33,80 @@ describe("Selfexplanatory.js", function () {
         var A = 1,
             B = {
                 x: 1
-            }, 
+            },
             C = document.body;
-        
+
         var method = function (a, b, c) {
-            if (a === A && b===B && c===C){
-            done();
+            if (a === A && b === B && c === C) {
+                done();
             }
         };
-        
+
         var explained = explain({
             args: "<string: url>",
             description: "does stuff",
         }, method);
-        
-        explained(A,B,C);
+
+        explained(A, B, C);
 
 
     });
 
     it("should throw error when arguments don't validate", function () {
         var method = jasmine.createSpy('callback');
-        
+
         var explained = explain({
             args: "<whatever truthy>",
             description: "does stuff",
-            validator: function(a){ return !!a; }
+            validator: function (a) {
+                return !!a;
+            }
         }, method);
-        
-        expect(function(){
+
+        expect(function () {
             explained('foo');
         }).not.toThrow();
-                
-        expect(function(){
+
+        expect(function () {
             explained();
         }).toThrow();
 
 
     });
-    
+
     it('should call the method with all arguments when validator is used too', function (done) {
         var A = 1,
             B = {
                 x: 1
-            }, 
+            },
             C = document.body;
-        
+
         var method = function (a, b, c) {
-            if (a === A && b===B && c===C){
-            done();
+            if (a === A && b === B && c === C) {
+                done();
             }
         };
-        
+
         var explained = explain({
             args: "<string: url>",
             description: "does stuff",
-            validator: function(a){ return !!a; }
+            validator: function (a) {
+                return !!a;
+            }
         }, method);
-        
-        explained(A,B,C);
 
+        explained(A, B, C);
+
+
+    });
+
+    it('should be self-explanatory itself :)', function (done) {
+        expect(function () {
+            explain({
+                args: " ",
+                description: " "
+            });
+        }).toThrow();
 
     });
 

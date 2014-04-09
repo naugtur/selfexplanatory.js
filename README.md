@@ -7,6 +7,8 @@ Make your functions and methods self-explanatory with this simple wrapper.
 
 Whatever you're creating, a library or an API or a widget - if you want someone to use it, let them do so without even looking for the documentation. You know they prefer it that way.
 
+Works in the browser and in nodejs. (`npm install selfexplanatory`)
+
 ## What it does
 
 Whenever someone sees the `explain`ed function in developer tools, on an object listing etc. it will show the instructions instead of bits of its definition. 

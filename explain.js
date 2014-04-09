@@ -21,18 +21,27 @@ var explain = (function () {
         if (!(definition.args && definition.description)) {
             throw new Error("Missing definition elements: args and description");
         }
-        var defString = "function( " + definition.args + " )\n" + definition.description + ((definition.returns) ? "\nreturns: " + definition.returns : '');
-        var describedMethod = function () {
+        var defString = "function( " + definition.args + " ) " + definition.description + ((definition.returns) ? "\nreturns: " + definition.returns : '');
+        var explainedMethod = function () {
             if (definition.validator && !definition.validator.apply(this, arguments)) {
                 throw new Usage(defString);
             }
             return method.apply(this, arguments)
         };
-        describedMethod.toString = describedMethod.toSource = function () {
+        explainedMethod.toString = explainedMethod.toSource = function () {
             return defString;
         }
-        return describedMethod
+        return explainedMethod
     }
+    //make it self-explanatory
+    explain = explain({
+        validator: function (o,f) {
+            return (typeof f !== "undefined" && f.apply);
+        },
+        args: "<object: explanation>,<function: your method>",
+        description: "adds explanation to the function, just like this one. \n explanation object must contain \n args and description",
+        returns: "function: your method with explanation"
+    }, explain);
 
     if (typeof module !== "undefined" && module.exports) {
         module.exports = explain;

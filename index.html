@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <script src="explain.js"></script>
+    <script>
+        var Example = {
+            alert: explain({
+                args: "<string: message>",
+                description: "Shows an alert. ",
+                validator: function(a){ return (typeof a === "string"); }
+            },alert)
+        }
+        console.log('Take a look at this example object');
+        console.log('Example',Example);
+        console.log('And this is what happens if the method is called incorrectly');
+        console.log('Example.alert()');
+        Example.alert();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
