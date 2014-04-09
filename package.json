@@ -1,0 +1,31 @@
+{
+  "name": "selfexplanatory",
+  "version": "0.0.1",
+  "description": "Make your functions and methods self-explanatory with this simple wrapper",
+  "main": "explain.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/naugtur/selfexplanatory.js.git"
+  },
+  "keywords": [
+    "javascript",
+    "function",
+    "usage",
+    "documentation",
+    "self-explanatory"
+  ],
+  "author": "naugtur",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/naugtur/selfexplanatory.js/issues"
+  },
+  "homepage": "https://github.com/naugtur/selfexplanatory.js",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-jasmine": "^0.6.3",
+    "grunt-contrib-uglify": "^0.4.0"
+  }
+}
